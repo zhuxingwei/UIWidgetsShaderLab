@@ -22,7 +22,7 @@ namespace DefaultNamespace
                     int panelWidth = (int) rectTransform.rect.width;
                     int panelHeight = (int) rectTransform.rect.height;
             
-                    _flushDrawer = new TestComputeBufferMesh(panelWidth, panelHeight, 1);
+                    _flushDrawer = new TestAlphaClip(panelWidth, panelHeight, 1, this);
                 }
 
                 return _flushDrawer;

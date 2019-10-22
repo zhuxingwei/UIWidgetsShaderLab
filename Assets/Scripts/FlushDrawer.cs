@@ -12,6 +12,7 @@ namespace DefaultNamespace
         public const int ShadowBox = 3;
         public const int ShadowRBox = 4;
         public const int FillComputeBuffer = 5;
+        public const int ClipAlpha = 6;
     }
     
     public abstract class FlushDrawer
@@ -19,6 +20,8 @@ namespace DefaultNamespace
         private readonly RenderTexture _renderTexture;
         private readonly int _renderTextureHeight;
         private readonly int _renderTextureWidth;
+
+        protected MonoBehaviour _owner;
 
         private readonly int _msaaSamples;
         private readonly CommandBuffer _cmdBuf;
@@ -37,6 +40,7 @@ namespace DefaultNamespace
             _shaders[ShaderType.ShadowBox] = new Material(Shader.Find("Custom/ShadowBox"));
             _shaders[ShaderType.ShadowRBox] = new Material(Shader.Find("Custom/ShadowRBox"));
             _shaders[ShaderType.FillComputeBuffer] = new Material(Shader.Find("Custom/FillComputeBuffer"));
+            _shaders[ShaderType.ClipAlpha] = new Material(Shader.Find("Custom/ClipAlpha"));
         }
 
         protected Material GetMaterial(int shaderType)
@@ -139,11 +143,12 @@ namespace DefaultNamespace
             tempRTs.Clear();
         }
 
-        public FlushDrawer(int height, int width, int msaaSamples)
+        public FlushDrawer(int height, int width, int msaaSamples, MonoBehaviour owner = null)
         {
             _renderTextureWidth = width;
             _renderTextureHeight = height;
             _msaaSamples = msaaSamples;
+            _owner = owner;
             
             var desc = new RenderTextureDescriptor(
                 _renderTextureWidth, _renderTextureHeight,
@@ -166,7 +171,7 @@ namespace DefaultNamespace
         void PreDraw()
         {
             _cmdBuf.SetRenderTarget(_renderTexture);
-            _cmdBuf.ClearRenderTarget(true, true, Color.gray);
+            _cmdBuf.ClearRenderTarget(true, true, Color.clear);
         }
 
         protected abstract void DoDraw();

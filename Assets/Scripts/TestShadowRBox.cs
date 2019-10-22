@@ -32,7 +32,7 @@ namespace DefaultNamespace
             material.SetVector("window", new Vector2(windowWidth, windowHeight));
             material.SetFloat("sigma", 3f);
             material.SetVector("color", new Vector4(0, 0, 0, 1));
-            material.SetFloat("corner", 50f);
+            material.SetFloat("corner", 25f);
             var viewMatrix = Matrix4x4.identity;
             cmdBuf.DrawMesh(mesh, viewMatrix, material);
         }

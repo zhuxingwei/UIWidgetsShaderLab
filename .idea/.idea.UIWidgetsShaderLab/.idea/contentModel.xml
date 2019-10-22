@@ -11,6 +11,7 @@
           <e p="Shaders" t="Include">
             <e p="BlitRT.shader" t="Include" />
             <e p="BlurShader.shader" t="Include" />
+            <e p="ClipAlpha.shader" t="Include" />
             <e p="Fill.shader" t="Include" />
             <e p="FillComputeBuffer.shader" t="Include" />
             <e p="GaussianBlur.shader" t="Include" />
@@ -22,6 +23,7 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="FlushDrawer.cs" t="Include" />
+          <e p="TestAlphaClip.cs" t="Include" />
           <e p="TestBlurDrawer.cs" t="Include" />
           <e p="TestCanvas.cs" t="Include" />
           <e p="TestComputeBufferMesh.cs" t="Include" />
@@ -32,9 +34,7 @@
       <e p="Library" t="ExcludeRecursive" />
       <e p="obj" t="ExcludeRecursive" />
       <e p="packages" t="ExcludeRecursive" />
-      <e p="Temp" t="ExcludeRecursive">
-        <e p="bin" t="ExcludeRecursive" />
-      </e>
+      <e p="Temp/bin" t="ExcludeRecursive" />
       <e p="UIWidgetsShaderLab.sln" t="IncludeFlat" />
     </e>
   </component>
